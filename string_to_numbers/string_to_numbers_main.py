@@ -139,7 +139,7 @@ def Dont_Make_Me_cry():
         One_Number_MF = this_is_an_integer[0]
         print(One_Number_MF)
       else:
-        this_is_an_integer.append((int_array[0] * int_array[1]) + ( int_array[2] * int_array[3]))
+        this_is_an_integer.append((int_array[0] * int_array[1]) + ( int_array[2] + int_array[3]))
         One_Number_MF = this_is_an_integer[0]
         print(One_Number_MF)
 
@@ -150,3 +150,42 @@ def Dont_Make_Me_cry():
 
 
 Dont_Make_Me_cry()
+
+
+#0-9 dict
+#10-19 dict
+#10s multiplier dict
+#100s multiplier dict
+#1000s multiplier dict
+
+
+#"five hundred"
+#"five", "hundred"
+
+#if five in 0-9 dict, and only 1 component 
+#print 5 
+
+#elif five in 0-9 dict and componenets >1;
+
+#def twocomponents
+    # if five in o-9 dict;
+          # multiplier a = 5
+    # if second component in multiplier components dicts
+          #multiplier b = 100
+
+    # print (sum of multiplier a * b)
+
+#"five hundred fifty five"
+
+
+
+#split by finding space
+#userinput= (0).lower
+
+
+#SPLITTING
+
+#0-9 dict, and it first; first value
+
+
+
