@@ -15,26 +15,87 @@ def add_task_to_list(tasks_list, task_name, completed=False):
 
 
 
-def updating_a_task(tasks_list, task_name, Completed):
-   task_id = input("enter the ID of the task:")
-   change_name = input("would you like to change the name? y/n:")
-   if change_name.lower == 'y':
-    task_name =input("enter the NEW NAME of the task:")
-   elif change_name.lower == 'n':
-      pass
-   change_status = input("would you like to change the completion status? y/n:")
-   if change_status.lower == 'y':
-    if Completed == False:
-       Completed = True
+def updating_a_task(tasks_list):
+   
+  try:
+    task_id = int(input("enter the ID of the task:"))
+    
 
-    else: 
-       Completed = False
+  #finding the id of the task 
+    task_to_update = None
+    for task in tasks_list:
+      if task['id'] == task_id:
+          task_to_update = task
+          break
+        
+  # task is not in the task list
+    if not task_to_update:
+      print("Task not found. Please try again.")
+      return tasks_list
+    
 
-   elif change_status.lower == 'n':
+  # change the name of the task
+    change_name = input("would you like to change the name? y/n:").lower()
+    if change_name == 'y':
+      task_to_update["task"] = input("Enter the NEW NAME of the task: ")
+    elif change_name == 'n':
       pass
-   else:
+    else:
       print("Invalid input, please try again")
-   tasks_list.update({"id": task_id, "task": task_name, "completed": Completed})
+
+
+  # change the status of the task 
+    change_status = input("would you like to change the completion status? y/n:").lower()
+
+    if change_status == 'y':
+      task_to_update['completed'] = not task_to_update['completed'] # toggling the status
+
+    elif change_status == 'n':
+        pass
+    else:
+        print("Invalid input, please try again")
+
+    #tasks_list.append({"id": task_id, "task": task_name, "completed": Completed})
+
+
+    print("-----------")
+    print("")
+    print(f"your task {task_to_update['task']} has been updated")
+    print("")
+    print("-----------")
+  except ValueError:
+    print("invalid entry, please try again!")
+  return tasks_list
+
+
+
+def Delete_Task(tasks_list):
+  task_id = int(input("enter the ID of the task:"))
+  erase_it = None
+  for task in tasks_list:
+     if task['id'] == task_id:
+        erase_it = task 
+        break
+  if not erase_it:
+    print("Task not found. Please try again.")
+    return tasks_list
+  
+  confirm_delete = input(f"Are you sure that you want to delete {erase_it['task']}? y/n: ").lower()
+  if confirm_delete == 'y':
+    tasks_list.remove(erase_it)
+    print("-----------")
+    print("")
+    print("Task Deleted!")
+    print("")
+    print("-----------")
+  elif confirm_delete == 'n':
+    print("-----------")
+    print("")
+    print(f"{erase_it['task']} was NOT deleted.")
+    print("")
+    print("-----------")
+
+  return tasks_list
 
 
 
@@ -102,13 +163,23 @@ def MainTaskFunction():
 
     elif UserInput == '3':
         # Updating a task
-        pass  # Placeholder for future code
+        updating_a_task(tasks_list)
+      
+
+
     elif UserInput == '4':
         # Deleting a task
-        pass  # Placeholder for future code
+        Delete_Task(tasks_list)
+
+
+
     elif UserInput == '5':
         # Exit program
+        print("-----------")
+        print("")
         print("Now exiting the program, Goodbye!")
+        print("")
+        print("-----------")
         break
     else:
         print("Invalid input, please try again.")
