@@ -11,7 +11,7 @@ import time
 #       print("invalid entry please try again")
 
 
-
+# pointless comment
 def county(wait):
 
   while wait != 0:
