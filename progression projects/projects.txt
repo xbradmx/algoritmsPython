@@ -1,0 +1,23 @@
+Start with:
+Scripting or scraping (webscraping)
+Numpy
+Matplotlib
+Pandas 
+
+To learn:
+• basic SQL
+some "Joins"
+.some select statements
+What actually is SQL?
+• Pandas
+• advanced operations
+•be comfortable working with large sets
+of data
+
+Start working with:
+OpenAI/API
+Claude API
+Ollama
+• LangChain
+LangGraph
+building some basic Al agents
