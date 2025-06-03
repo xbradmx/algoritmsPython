@@ -37,8 +37,23 @@ def one_hot_encode():       # - Convert labels (5 → [0,0,0,0,0,1,0,0,0,0])
 
 
 def create_batches():       #- Group data for efficient training 
-  pass
+  global x_train, x_test, y_train, y_test
+  model = tf.keras.Sequential([
+      tf.keras.layers.Dense(128, activation='relu', input_shape=(784,)),  # Hidden layer
+      tf.keras.layers.Dense(10, activation='softmax')                     # Output layer
+  ])
 
+  model.compile(optimizer='adam',
+                loss='categorical_crossentropy',
+                metrics=['accuracy'])
+  
+  model.fit(x_train, y_train, epochs=5, batch_size=32)
+  test_loss, test_accuracy = model.evaluate(x_test, y_test)
+  print(f'Test accuracy: {test_accuracy:.4f}')
+  print(f'Test loss: {test_loss:.4f}')
+  
+  
+  
 
 def testing_mnist():
   # load_mnist()
@@ -47,9 +62,15 @@ def testing_mnist():
   plt.title(f"Label: {y_train[2]}")
   plt.show()
 
+# def model_defined():
+#   global x_train, x_test, y_train, y_test
+
+
 
 
 preprocess_data()
 one_hot_encode()
+create_batches()
+# model_defined()
 
 #testing_mnist()
