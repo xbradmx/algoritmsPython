@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
 
 def num_email_func():
@@ -7,7 +8,11 @@ def num_email_func():
   print('\n')
   #url =str("https://marketgatelancaster.co.uk/stores/ ") # just for tests
 
-  response = requests.get(url)
+
+  headers = {'User-Agent': 'Mozilla/5.0'}
+  response = requests.get(url, headers=headers)
+  time.sleep(1.5)
+  
   response.raise_for_status()  ##for bad requests 
 
   soup = BeautifulSoup(response.content, "html.parser") 
@@ -54,6 +59,12 @@ def num_email_func():
         else:
           continue
 
+
+
+
+
+
+  
 
 
 
